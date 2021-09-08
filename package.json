@@ -1,0 +1,25 @@
+{
+  "name": "customer_cli_w_mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infiniteoo/NODEJS-customer_cli_w_mongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infiniteoo/NODEJS-customer_cli_w_mongoose/issues"
+  },
+  "homepage": "https://github.com/infiniteoo/NODEJS-customer_cli_w_mongoose#readme",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "inquirer": "^8.1.2",
+    "mongoose": "^6.0.5"
+  }
+}
