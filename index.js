@@ -31,16 +31,23 @@ const addCustomer = async (customer) => {
 };
 
 // find customer
-const findCustomer = (name) => {
-  // make case insensitive
-  const search = new RegExp(name, "i");
-  Customer.find({ $or: [{ firstName: search }, { lastName: search }] }).then(
-    (customer) => {
-      console.info(customer);
-      console.info(`${customer.length} matches.`);
+const findCustomer = async (name) => {
+  try {
+    const search = new RegExp(name, "i");
+    const foundCustomer = await Customer.find({
+      $or: [{ firstname: search }, { lastname: search }],
+    });
+    if (foundCustomer) {
+      console.info(foundCustomer);
+      console.info(`${foundCustomer.length} matches`);
       mongoose.connection.close();
+    } else {
+      console.error("Error finding customer");
     }
-  );
+  } catch (error) {
+    console.error(error);
+  }
+  // Make case insensitive
 };
 
 // export all methods
