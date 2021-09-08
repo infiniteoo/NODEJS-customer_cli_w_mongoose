@@ -67,4 +67,11 @@ program
     prompt(customerQuestions).then((answers) => updateCustomer(_id, answers));
   });
 
+// remove command
+program
+  .command("remove <_id>")
+  .alias("r")
+  .description("Remove a customer from the database.")
+  .action((_id) => removeCustomer(_id));
+
 program.parse(process.argv);
