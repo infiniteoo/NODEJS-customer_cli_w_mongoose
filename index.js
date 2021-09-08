@@ -8,9 +8,6 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 // connect to db
-const db = mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING. {
-    useMongoClient: true
+const db = mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {
+  useMongoClient: true,
 });
-
-
-
