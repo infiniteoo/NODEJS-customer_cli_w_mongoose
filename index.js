@@ -30,6 +30,21 @@ const addCustomer = async (customer) => {
   }
 };
 
+// update customer
+const updateCustomer = async (_id, customer) => {
+  try {
+    const updatedCustomer = await Customer.updateOne({ _id }, customer);
+    if (updatedCustomer) {
+      console.info("Customer Updated");
+      mongoose.connection.close();
+    } else {
+      console.error("Error updating customer");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // find customer
 const findCustomer = async (name) => {
   try {
