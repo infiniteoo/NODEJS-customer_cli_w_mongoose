@@ -45,6 +45,21 @@ const updateCustomer = async (_id, customer) => {
   }
 };
 
+// update customer
+const removeCustomer = async (_id) => {
+  try {
+    const removedCustomer = await Customer.deleteOne({ _id });
+    if (removedCustomer) {
+      console.info("Customer Removed from database");
+      mongoose.connection.close();
+    } else {
+      console.error("Error removing customer");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // find customer
 const findCustomer = async (name) => {
   try {
