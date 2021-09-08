@@ -100,4 +100,7 @@ const findCustomer = async (name) => {
 module.exports = {
   addCustomer,
   findCustomer,
+  updateCustomer,
+  removeCustomer,
+  listCustomers,
 };

@@ -1,6 +1,12 @@
 const program = require("commander");
 const { prompt } = require("inquirer");
-const { addCustomer, findCustomer } = require("./index");
+const {
+  addCustomer,
+  findCustomer,
+  updateCustomer,
+  removeCustomer,
+  listCustomers,
+} = require("./index");
 
 // customer questions
 const customerQuestions = [
@@ -36,6 +42,7 @@ program.version("0.0.1").description("CLI for managing customers");
     addCustomer({ firstname, lastname, phone, email });
   }); */
 
+// add command
 program
   .command("add")
   .alias("a")
@@ -44,10 +51,20 @@ program
     prompt(customerQuestions).then((answers) => addCustomer(answers));
   });
 
+// find command
 program
   .command("find <name>")
   .alias("f")
   .description("Find a customer in the database.")
   .action((name) => findCustomer(name));
+
+// update command
+program
+  .command("update <_id>")
+  .alias("u")
+  .description("updated a customer in the database")
+  .action((_id) => {
+    prompt(customerQuestions).then((answers) => updateCustomer(_id, answers));
+  });
 
 program.parse(process.argv);
