@@ -1,8 +1,10 @@
 {
-  "name": "customer_cli_w_mongoose",
+  "name": "customer-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./commands.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require("commander");
 const { prompt } = require("inquirer");
 const {
@@ -80,5 +82,4 @@ program
   .description("List all customers in database.")
   .action(() => listCustomers());
 
-  
 program.parse(process.argv);
