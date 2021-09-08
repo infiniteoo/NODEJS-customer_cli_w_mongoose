@@ -60,6 +60,22 @@ const removeCustomer = async (_id) => {
   }
 };
 
+// list all customers in db
+const listCustomers = async () => {
+  try {
+    const allCustomers = await Customer.find();
+    if (allCustomers) {
+      console.info(allCustomers);
+      console.info(`${allCustomers.length} matches returned.`);
+      mongoose.connection.close();
+    } else {
+      console.log("error listing all customers");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // find customer
 const findCustomer = async (name) => {
   try {
