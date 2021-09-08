@@ -9,18 +9,25 @@ mongoose.Promise = global.Promise;
 
 // connect to db
 const db = mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {
-  useMongoClient: true,
+  /*  useMongoClient: true, */
 });
 
 // import customer model
 const Customer = require("./models/customer");
 
 // add customer
-const addCustomer = (customer) => {
-  Customer.create(customer).then((customer) => {
-    console.info("New Customer Added");
-    db.close();
-  });
+const addCustomer = async (customer) => {
+  try {
+    const newCustomer = await Customer.create(customer);
+    if (newCustomer) {
+      console.info("New Customer Added");
+      mongoose.connection.close();
+    } else {
+      console.error("Error adding customer");
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // find customer
@@ -31,7 +38,7 @@ const findCustomer = (name) => {
     (customer) => {
       console.info(customer);
       console.info(`${customer.length} matches.`);
-      db.close();
+      mongoose.connection.close();
     }
   );
 };

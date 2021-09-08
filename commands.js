@@ -11,4 +11,10 @@ program
     addCustomer({ firstname, lastname, phone, email });
   });
 
+  program
+  .command('find <name>')
+  .alias('f')
+  .description('Find a customer in the database.')
+  .action(name => findCustomer(name));
+
 program.parse(process.argv);
